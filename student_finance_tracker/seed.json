@@ -1,0 +1,92 @@
+[
+    {
+        "id": "txn_1",
+        "description": "Lunch at cafeteria",
+        "amount": 12.50,
+        "category": "Food",
+        "date": "2025-09-25",
+        "createdAt": "2025-09-25T12:00:00.000Z",
+        "updatedAt": "2025-09-25T12:00:00.000Z"
+    },
+    {
+        "id": "txn_2",
+        "description": "Chemistry textbook",
+        "amount": 89.99,
+        "category": "Books",
+        "date": "2025-09-23",
+        "createdAt": "2025-09-23T10:30:00.000Z",
+        "updatedAt": "2025-09-23T10:30:00.000Z"
+    },
+    {
+        "id": "txn_3",
+        "description": "Bus pass",
+        "amount": 45.00,
+        "category": "Transport",
+        "date": "2025-09-20",
+        "createdAt": "2025-09-20T09:15:00.000Z",
+        "updatedAt": "2025-09-20T09:15:00.000Z"
+    },
+    {
+        "id": "txn_4",
+        "description": "Coffee with friends",
+        "amount": 8.75,
+        "category": "Entertainment",
+        "date": "2025-09-28",
+        "createdAt": "2025-09-28T15:45:00.000Z",
+        "updatedAt": "2025-09-28T15:45:00.000Z"
+    },
+    {
+        "id": "txn_5",
+        "description": "Registration fees",
+        "amount": 150.00,
+        "category": "Fees",
+        "date": "2025-09-01",
+        "createdAt": "2025-09-01T08:00:00.000Z",
+        "updatedAt": "2025-09-01T08:00:00.000Z"
+    },
+    {
+        "id": "txn_6",
+        "description": "Grocery shopping",
+        "amount": 67.32,
+        "category": "Food",
+        "date": "2025-09-26",
+        "createdAt": "2025-09-26T18:20:00.000Z",
+        "updatedAt": "2025-09-26T18:20:00.000Z"
+    },
+    {
+        "id": "txn_7",
+        "description": "Movie tickets",
+        "amount": 24.00,
+        "category": "Entertainment",
+        "date": "2025-09-27",
+        "createdAt": "2025-09-27T20:00:00.000Z",
+        "updatedAt": "2025-09-27T20:00:00.000Z"
+    },
+    {
+        "id": "txn_8",
+        "description": "Stationery supplies",
+        "amount": 15.50,
+        "category": "Books",
+        "date": "2025-09-24",
+        "createdAt": "2025-09-24T14:10:00.000Z",
+        "updatedAt": "2025-09-24T14:10:00.000Z"
+    },
+    {
+        "id": "txn_9",
+        "description": "Taxi ride",
+        "amount": 18.75,
+        "category": "Transport",
+        "date": "2025-09-29",
+        "createdAt": "2025-09-29T22:30:00.000Z",
+        "updatedAt": "2025-09-29T22:30:00.000Z"
+    },
+    {
+        "id": "txn_10",
+        "description": "Miscellaneous expenses",
+        "amount": 5.00,
+        "category": "Other",
+        "date": "2025-09-22",
+        "createdAt": "2025-09-22T16:45:00.000Z",
+        "updatedAt": "2025-09-22T16:45:00.000Z"
+    }
+]

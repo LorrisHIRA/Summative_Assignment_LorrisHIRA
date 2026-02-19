@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker - Regex Tests</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f4f4f4;
+        }
+        .test { 
+            margin-bottom: 30px; 
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 { color: #5C4033; }
+        h2 { color: #8B6F47; }
+        .pass { 
+            color: #27ae60; 
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .fail { 
+            color: #e74c3c; 
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        input { 
+            margin: 10px 0; 
+            padding: 10px; 
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        button { 
+            padding: 10px 20px; 
+            background-color: #8B6F47;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #6F4E37;
+        }
+        #result {
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Regex Validation Test Suite</h1>
+    <p>Test each regex validator by entering sample data below</p>
+
+    <div class="test">
+        <h2>Description Validation</h2>
+        <p>Rule: No leading/trailing spaces, no duplicate consecutive words</p>
+        <input type="text" id="desc-test" placeholder="Try: 'hello world' or '  invalid'">
+        <button onclick="testDescription()">Test Description</button>
+        <p id="desc-result"></p>
+    </div>
+
+    <div class="test">
+        <h2>Amount Validation</h2>
+        <p>Rule: Valid number with max 2 decimal places</p>
+        <input type="text" id="amount-test" placeholder="Try: '25.99' or '100'">
+        <button onclick="testAmount()">Test Amount</button>
+        <p id="amount-result"></p>
+    </div>
+
+    <div class="test">
+        <h2>Date Validation</h2>
+        <p>Rule: Must be YYYY-MM-DD format</p>
+        <input type="text" id="date-test" placeholder="Try: '2026-02-19'">
+        <button onclick="testDate()">Test Date</button>
+        <p id="date-result"></p>
+    </div>
+
+    <div class="test">
+        <h2>Category Validation</h2>
+        <p>Rule: Only letters, spaces, and hyphens</p>
+        <input type="text" id="cat-test" placeholder="Try: 'Fast Food' or 'Books'">
+        <button onclick="testCategory()">Test Category</button>
+        <p id="cat-result"></p>
+    </div>
+
+    <div class="test">
+        <h2>Duplicate Words Detection</h2>
+        <p>Rule: Detects repeated consecutive words (advanced pattern)</p>
+        <input type="text" id="dup-test" placeholder="Try: 'hello hello world'">
+        <button onclick="testDuplicate()">Test Duplicate</button>
+        <p id="dup-result"></p>
+    </div>
+
+    <script>
+        // Regex validation rules
+        const descriptionRegex = /^\S(?:.*\S)?$/;
+        const amountRegex = /^(0|[1-9]\d*)(\.\d{1,2})?$/;
+        const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+        const categoryRegex = /^[A-Za-z]+(?:[ -][A-Za-z]+)*$/;
+        const duplicateWordsRegex = /\b(\w+)\s+\1\b/i;
+
+        function testDescription() {
+            const value = document.getElementById('desc-test').value;
+            const formatValid = descriptionRegex.test(value);
+            const noDuplicates = !duplicateWordsRegex.test(value);
+            const result = formatValid && noDuplicates;
+            
+            const resultEl = document.getElementById('desc-result');
+            resultEl.className = result ? 'pass' : 'fail';
+            
+            if (!formatValid) {
+                resultEl.textContent = ' FAIL: Invalid format (leading/trailing spaces)';
+            } else if (!noDuplicates) {
+                resultEl.textContent = ' FAIL: Contains duplicate consecutive words';
+            } else {
+                resultEl.textContent = ' PASS: Valid description';
+            }
+        }
+
+        function testAmount() {
+            const value = document.getElementById('amount-test').value;
+            const result = amountRegex.test(value);
+            
+            const resultEl = document.getElementById('amount-result');
+            resultEl.className = result ? 'pass' : 'fail';
+            resultEl.textContent = result ? ' PASS: Valid amount' : ' FAIL: Invalid amount format';
+        }
+
+        function testDate() {
+            const value = document.getElementById('date-test').value;
+            const formatValid = dateRegex.test(value);
+            let result = false;
+            let message = '';
+            
+            if (!formatValid) {
+                message = ' FAIL: Must be YYYY-MM-DD format';
+            } else {
+                // Check if it's a real calendar date
+                const date = new Date(value);
+                result = date.toISOString().slice(0, 10) === value;
+                message = result ? ' PASS: Valid date' : ' FAIL: Invalid calendar date';
+            }
+            
+            const resultEl = document.getElementById('date-result');
+            resultEl.className = result ? 'pass' : 'fail';
+            resultEl.textContent = message;
+        }
+
+        function testCategory() {
+            const value = document.getElementById('cat-test').value;
+            const result = categoryRegex.test(value);
+            
+            const resultEl = document.getElementById('cat-result');
+            resultEl.className = result ? 'pass' : 'fail';
+            resultEl.textContent = result ? ' PASS: Valid category' : ' FAIL: Only letters, spaces, and hyphens allowed';
+        }
+
+        function testDuplicate() {
+            const value = document.getElementById('dup-test').value;
+            const hasDuplicates = duplicateWordsRegex.test(value);
+            
+            const resultEl = document.getElementById('dup-result');
+            resultEl.className = hasDuplicates ? 'fail' : 'pass';
+            
+            if (hasDuplicates) {
+                const match = value.match(duplicateWordsRegex);
+                resultEl.textContent = ` FAIL: Found duplicate word "${match[1]}"`;
+            } else {
+                resultEl.textContent = ' PASS: No duplicate consecutive words';
+            }
+        }
+    </script>
+</body>
+</html>

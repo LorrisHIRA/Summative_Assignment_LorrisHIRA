@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Finance Tracker</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Student Finance Tracker</h1>
+        <nav>
+            <a href="#about" id="skip-to-content">Skip to main content</a>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#records">Records</a></li>
+                <li><a href="#add-record">Add Record</a></li>
+                <li><a href="#settings">Settings</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboard" aria-labelledby="dashboard-heading">
+            <h2 id="dashboard-heading">Dashboard</h2>
+            <div class="stats">
+                <div class="stat">
+                    <h3>Total Records</h3>
+                    <p id="total-records">0</p>
+                </div>
+                <div class="stat">
+                    <h3>Total Amount</h3>
+                    <p id="total-amount">$0.00</p>
+                </div>
+                <div class="stat">
+                    <h3>Top Category</h3>
+                    <p id="top-category">None</p>
+                </div>
+                <div class="stat">
+                    <h3>Last 7 Days Trend</h3>
+                    <canvas id="trend-chart" width="200" height="100"></canvas>
+                </div>
+            </div>
+            <div class="cap-target">
+                <label for="cap-input">Set Monthly Cap ($):</label>
+                <input type="number" id="cap-input" min="0" step="0.01">
+                <button id="set-cap">Set Cap</button>
+                <p id="cap-status" aria-live="polite">Remaining: $0.00</p>
+            </div>
+        </section>
+
+        <section id="records" aria-labelledby="records-heading">
+            <h2 id="records-heading">Records</h2>
+            <div class="search-sort">
+                <input type="text" id="search-input" placeholder="Search with regex (e.g., coffee)">
+                <button id="sort-date">Sort by Date</button>
+                <button id="sort-description">Sort by Description</button>
+                <button id="sort-amount">Sort by Amount</button>
+            </div>
+            <table id="records-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="records-body">
+                    <!-- Records will be inserted here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="add-record" aria-labelledby="add-record-heading">
+            <h2 id="add-record-heading">Add/Edit Record</h2>
+            <form id="record-form">
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" required>
+                    <span class="error" id="description-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount ($):</label>
+                    <input type="number" id="amount" min="0" step="0.01" required>
+                    <span class="error" id="amount-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category" required>
+                        <option value="Food">Food</option>
+                        <option value="Books">Books</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Fees">Fees</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" required>
+                    <span class="error" id="date-error"></span>
+                </div>
+                <button type="submit" id="submit-record">Add Record</button>
+                <button type="button" id="cancel-edit">Cancel</button>
+            </form>
+        </section>
+
+        <section id="settings" aria-labelledby="settings-heading">
+            <h2 id="settings-heading">Settings</h2>
+            <div class="settings-group">
+                <h3>Currency Rates</h3>
+                <label for="usd-rate">USD Rate:</label>
+                <input type="number" id="usd-rate" value="1" step="0.01">
+                <label for="eur-rate">EUR Rate:</label>
+                <input type="number" id="eur-rate" value="0.85" step="0.01">
+                <label for="gbp-rate">GBP Rate:</label>
+                <input type="number" id="gbp-rate" value="0.73" step="0.01">
+                <button id="save-rates">Save Rates</button>
+            </div>
+            <div class="settings-group">
+                <h3>Data Management</h3>
+                <button id="export-data">Export JSON</button>
+                <input type="file" id="import-file" accept=".json">
+                <button id="import-data">Import JSON</button>
+                <span id="import-status" aria-live="assertive"></span>
+            </div>
+        </section>
+
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About</h2>
+            <p>This Student Finance Tracker helps you manage your expenses with ease. Track transactions, categorize spending, and monitor your budget.</p>
+            <p>Contact: <a href="mailto:your.email@example.com">l.hira@alustudent.com</a> | <a href="https://github.com/LorrisHIRA" target="_blank">GitHub</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Student Finance Tracker. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="scripts/app.js"></script>
+</body>
+</html>
