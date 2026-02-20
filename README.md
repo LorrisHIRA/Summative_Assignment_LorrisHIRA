@@ -48,3 +48,6 @@ Advanced (Duplicate Word Detection):
 1. Clone the repository
 2. Open index.html in your browser
 3. Or deploy using GitHub Pages
+ 
+ # Demo video link 
+ https://app.screencastify.com/watch/TOX4ygZgikrxUx4igc1f?checkOrg=4ce6ffc8-b019-4704-a6ce-ab0623bc63bd
